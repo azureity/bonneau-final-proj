@@ -14,5 +14,6 @@ To do:
 	Price - price
 	etc...
 4. Build a graph based on the table
+	Graph type: correlations, something else, something else...
 
 
