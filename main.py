@@ -31,19 +31,23 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		#print("TRIP: {0}\n\tFARE: {1}". format(x, y))
 		location_pickup = geolocator.reverse(x[-3]+','+x[-4])
 		location_dropoff = geolocator.reverse(x[-1]+','+x[-2])
-		#print("PICKUP:\t\t" + location_pickup.address)		
-		#print("DROPOFF:\t" + location_dropoff.address)
+		print("PICKUP:\t\t" + location_pickup.address)		
+		print("DROPOFF:\t" + location_dropoff.address)
 		ctr += 1
 		output_line = [x, y]
 		output_line.append([location_pickup.address])
 		output_line.append([location_dropoff.address])
 	
-		pickup_neigh = location_pickup.address.split(',')[3]
-		dropoff_neigh = location_dropoff.address.split(',')[3]
+		pickup_neigh = location_pickup.address.split(',')[2]
+		dropoff_neigh = location_dropoff.address.split(',')[2]
 
 		output_line.append([pickup_neigh])
 		output_line.append([dropoff_neigh])
 
+		output.writerows(output_line)
+		if(ctr == 15):
+			break
+'''
 		if(pickup_neigh in neighlist_pickup):
 			output_line.append(neighlist_pickup.index(pickup_neigh))
 		else:
@@ -56,12 +60,13 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			neighlist_dropoff.append(dropoff_neigh)
 			output_line.append(neighlist_dropoff.index(dropoff_neigh))
 
-
 		output.writerows(output_line)
+
+
 		if(ctr == 15):
 			outputfile.close()
 			break
-
+'''
 
 ref_file = open('neigh_ref.txt', 'wb')
 ref_file.write(neighlist_pickup)
