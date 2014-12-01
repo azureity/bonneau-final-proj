@@ -17,4 +17,6 @@
         4. Build a graph based on the table
         	Graph type: correlations, something else, something else...
 
+	Alternatives:
+	A) Examine tip data to find highest and lowest tipped areas of manhattan/NY
 
