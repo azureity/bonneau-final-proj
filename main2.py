@@ -73,8 +73,8 @@ line_save.close()
 # To resolve excluded lines
 if(args.secondpass):
 	with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
-	next(faredat)
-	next(tripdat)
+		next(faredat)
+		next(tripdat)
 	outputfile = open('rawoutput.csv', 'a')
 		
 	# Take excluded line file and read it all as an array
@@ -135,7 +135,7 @@ if(args.finalpass):
 
 			# TRUEFILE[19] SHOULD BE THE FARE AMT
 			# Writes the the csv: bin# to bin# and fare
-			binoutput2.writerows([nl_pu.index(line[-2]), nl_do.index(line[-1]), truefile[19])
+			binoutput2.writerows(nl_pu.index(line[-2]), nl_do.index(line[-1]), truefile[19])
 	
 	# Write the index of each item in the neighborhoods list
 	with open('neigh_ref.txt' ,'wb') as ref_file:
