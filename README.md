@@ -1,6 +1,7 @@
         http://chriswhong.com/open-data/foil_nyc_taxi/
         http://www.andresmh.com/nyctaxitrips/
         https://pypi.python.org/pypi/geopy
+        Mapping: Basemap, http://matplotlib.org/basemap
 
         To do:
 
@@ -17,4 +18,8 @@
         4. Build a graph based on the table
         	Graph type: correlations, something else, something else...
 
+	Alternatives:
+	A) Examine tip data to find highest and lowest tipped areas of manhattan/NY
+	
+	
 
