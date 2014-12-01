@@ -1,5 +1,6 @@
         http://chriswhong.com/open-data/foil_nyc_taxi/
         http://www.andresmh.com/nyctaxitrips/
+        https://pypi.python.org/pypi/geopy
 
         To do:
 
