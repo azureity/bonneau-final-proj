@@ -11,7 +11,7 @@ parser.add_argument('-t', dest="tripdat", help="input a .csv tripdata file to si
 parser.add_argument('-f', dest="faredat", help="input a .csv faredata file to sift through")
 parser.add_argument('--firstpass', dest="firstpass", action='store_false', default=False, help="first pass will build an excluded lines file and the rest will exist in an output .csv")
 parser.add_argument('--secondpass', dest='secondpass', action='store_false', default=False, help="second pass to pick up all excluded lines")
-parser.add_argument('--finalpass', dest='finalpass', action='store_false', default=Flase, help="to build a table for bins")
+parser.add_argument('--finalpass', dest='finalpass', action='store_false', default=False, help="to build a table for bins")
 args = parser.parse_args()
 
 ctr = 0
