@@ -58,7 +58,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		# Build output line for .csv
 		output_line = x + y
-		location_line = [location_pickup.address.split(',')[-7], location_dropoff.address.split(',')[-7], location_pickup.address, location_dropoff.address]
+		location_line = [location_pickup.address, location_dropoff.address, location_pickup.address.split(',')[-7], location_dropoff.address.split(',')[-7]]
 
 		# Build full output here
 		output_line += location_line
