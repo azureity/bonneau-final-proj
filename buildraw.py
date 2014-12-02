@@ -58,16 +58,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		# Build output line for .csv
 		output_line = x + y
-<<<<<<< HEAD:buildraw.py
-		# Find the neighbrhodd in the list - NEIGHBORHOODS SHOULD BE IN INDEX -7
-		locsplitp = location_pickup.address.split(',')
-		locsplitd = location_dropoff.address.split(',')
-
-		# Builds all locations: pickup address, dropoff address, pickup neighborhood, dropoff neighborhood
-		location_line = [location_pickup.address, location_dropoff.address, locsplitp[-7], locsplitd[-7]]
-=======
-		location_line = [location_pickup.address.split(',')[2], location_dropoff.address.split(',')[2], location_pickup.address, location_dropoff.address]
->>>>>>> 27c9fd722b1892883cb5af042011218ec4fef2bf:main3.py
+		location_line = [location_pickup.address.split(',')[-7], location_dropoff.address.split(',')[-7], location_pickup.address, location_dropoff.address]
 
 		# Build full output here
 		output_line += location_line
@@ -79,10 +70,6 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		if(ctr == 15):
 			break
 
-<<<<<<< HEAD:buildraw.py
-# Close files for cleanup
-outputfile.close()
-=======
 L = []
 
 binfile = open('binoutput.csv', 'wb')
@@ -114,5 +101,5 @@ with open('rawoutput.csv', 'rb') as rawdata:
 
 
 # Close line save file
-line_save.close()
->>>>>>> 27c9fd722b1892883cb5af042011218ec4fef2bf:main3.py
+outputfile.close()
+binfile.close()
