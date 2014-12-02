@@ -54,7 +54,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		# Build output line for .csv
 		output_line = x + y
-		location_line = [location_pickup.address, location_dropoff.address, location_pickup.address.split(',')[2], location_dropoff.address.split(',')[2]]
+		location_line = [location_pickup.address.split(',')[2], location_dropoff.address.split(',')[2], location_pickup.address, location_dropoff.address]
 
 		output_line += location_line
 
@@ -64,6 +64,36 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Test with 15 lines
 		if(ctr == 15):
 			break
+
+L = []
+
+binfile = open('binoutput.csv', 'wb')
+bins = csv.writer(binfile, delimiter=',', quoting=csv.QUOTE_ALL)
+
+with open('rawoutput.csv', 'rb') as rawdata:
+	reader = csv.reader(rawdata, delimiter=',',quotechar='|')
+	for row in reader:
+		new_output_line = []
+
+		if (row[25] in L):
+			new_output_line.append(L.index(row[25]))
+		else:
+			L.append(row[25])
+			new_output_line.append(L.index(row[25]))
+
+		if (row[26] in L):
+			new_output_line.append(L.index(row[26]))
+		else:
+			L.append(row[26])
+			new_output_line.append(L.index(row[26]))
+
+		new_output_line.append(row[19])
+
+		bins.writerow(new_output_line)
+
+		#print(L)
+
+
 
 # Close line save file
 line_save.close()
