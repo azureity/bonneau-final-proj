@@ -58,16 +58,12 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		# Build output line for .csv
 		output_line = x + y
-<<<<<<< HEAD:buildraw.py
 		# Find the neighbrhodd in the list - NEIGHBORHOODS SHOULD BE IN INDEX -7
 		locsplitp = location_pickup.address.split(',')
 		locsplitd = location_dropoff.address.split(',')
 
 		# Builds all locations: pickup address, dropoff address, pickup neighborhood, dropoff neighborhood
 		location_line = [location_pickup.address, location_dropoff.address, locsplitp[-7], locsplitd[-7]]
-=======
-		location_line = [location_pickup.address.split(',')[2], location_dropoff.address.split(',')[2], location_pickup.address, location_dropoff.address]
->>>>>>> 27c9fd722b1892883cb5af042011218ec4fef2bf:main3.py
 
 		# Build full output here
 		output_line += location_line
@@ -79,40 +75,5 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		if(ctr == 15):
 			break
 
-<<<<<<< HEAD:buildraw.py
 # Close files for cleanup
 outputfile.close()
-=======
-L = []
-
-binfile = open('binoutput.csv', 'wb')
-bins = csv.writer(binfile, delimiter=',', quoting=csv.QUOTE_ALL)
-
-with open('rawoutput.csv', 'rb') as rawdata:
-	reader = csv.reader(rawdata, delimiter=',',quotechar='|')
-	for row in reader:
-		new_output_line = []
-
-		if (row[25] in L):
-			new_output_line.append(L.index(row[25]))
-		else:
-			L.append(row[25])
-			new_output_line.append(L.index(row[25]))
-
-		if (row[26] in L):
-			new_output_line.append(L.index(row[26]))
-		else:
-			L.append(row[26])
-			new_output_line.append(L.index(row[26]))
-
-		new_output_line.append(row[19])
-
-		bins.writerow(new_output_line)
-
-		#print(L)
-
-
-
-# Close line save file
-line_save.close()
->>>>>>> 27c9fd722b1892883cb5af042011218ec4fef2bf:main3.py
