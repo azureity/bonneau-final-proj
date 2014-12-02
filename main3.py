@@ -22,7 +22,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	next(faredat)
 	next(tripdat)
 	outputfile = open('rawoutput.csv', 'wb')
-	output = csv.writer(outputfile)
+	output = csv.writer(outputfile, delimiter=',', quoting=csv.QUOTE_ALL)
 	geolocator = Nominatim()
 	for x, y in izip(tripdat, faredat):
 		x_ori = x.strip()
@@ -54,15 +54,12 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		# Build output line for .csv
 		output_line = x + y
-		output_line.append(location_pickup.address)
-		output_line.append(location_dropoff.address)
+		location_line = [location_pickup.address, location_dropoff.address, location_pickup.address.split(',')[2], location_dropoff.address.split(',')[2]]
 
-		output_line.append(location_pickup.address.split(',')[2])
-		output_line.append(location_dropoff.address.split(',')[2])
-		
-		print(output_line)
+		output_line += location_line
 
-		output.writerows(output_line)
+		# Write ROW, not write ROWS
+		output.writerow(output_line)
 
 		# Test with 15 lines
 		if(ctr == 15):
