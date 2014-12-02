@@ -25,10 +25,13 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	output = csv.writer(outputfile)
 	geolocator = Nominatim()
 	for x, y in izip(tripdat, faredat):
-		x = x.strip()
-		x = x.split(',')
-		y = y.strip()
-		y = y.split(',')
+		x_ori = x.strip()
+		x = x_ori.split(',')
+		y_ori = y.strip()
+		y = y_ori.split(',')
+
+		# To show that the program has not crashed and is working
+		print('line ' + str(ctr) + '\tworking...')
 		
 		# If error occurs with geolocator, it will try again up to 10 times
 		attempts = 0
@@ -42,24 +45,16 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 				print(location_dropoff.address)
 				break
 			except:
-				print('failed to geo resolve line: ' + ctr)
+				print('failed to geo resolve line: ' + str(ctr) + '\t trying again until != 10 : #' + str(attempts))
 				attempts += 1
 		
 		# To show that the program has not crashed
-		print('line ' + ctr + '\tworking...')
 		ctr += 1
 
 		# Build output line for .csv
-		output_line = x + y
-		output_line.append([str(location_pickup.address)])
-		output_line.append([str(location_dropoff.address)])
-	
-		pickup_neigh = location_pickup.address.split(',')[2]
-		dropoff_neigh = location_dropoff.address.split(',')[2]
-
-		# These are the bins (neighborhoods)
-		output_line.append([pickup_neigh])
-		output_line.append([dropoff_neigh])
+		output_line = x_ori + ',' + y_ori
+		output_line += output_line + ',' + location_pickup.address + ',' + location_dropoff.address	
+		output_line += output_line + ',' + location_pickup.address.split(',')[2] + ',' + location_dropoff.address.split(',')[2]
 
 		output.writerows(output_line)
 
