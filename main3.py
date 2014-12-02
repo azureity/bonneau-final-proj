@@ -41,10 +41,11 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			try:
 				location_pickup = geolocator.reverse(x[-3] + ',' + x[-4])
 				location_dropoff = geolocator.reverse(x[-1] + ',' + x[-2])
+				
 				print(location_pickup.address)
 				print(location_dropoff.address)
 				break
-			except:
+			except geopy.exc.GeocoderTimedOut:
 				print('failed to geo resolve line: ' + str(ctr) + '\t trying again until != 10 : #' + str(attempts))
 				attempts += 1
 		
@@ -52,9 +53,14 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		ctr += 1
 
 		# Build output line for .csv
-		output_line = x_ori + ',' + y_ori
-		output_line += output_line + ',' + location_pickup.address + ',' + location_dropoff.address	
-		output_line += output_line + ',' + location_pickup.address.split(',')[2] + ',' + location_dropoff.address.split(',')[2]
+		output_line = x + y
+		output_line.append(location_pickup.address)
+		output_line.append(location_dropoff.address)
+
+		output_line.append(location_pickup.address.split(',')[2])
+		output_line.append(location_dropoff.address.split(',')[2])
+		
+		print(output_line)
 
 		output.writerows(output_line)
 
