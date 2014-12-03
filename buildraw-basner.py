@@ -3,6 +3,8 @@ from geopy.geocoders import Nominatim
 from itertools import izip
 import csv
 import re
+import simplejson as json
+import urllib2
 
 # Add arguments for cli use
 parser = argparse.ArgumentParser(description='Sift through data')
@@ -17,13 +19,29 @@ _digits = re.compile('\d')
 def contains_digits(d):
 	return bool(_digits.search(d))
 
+def getN(lat, lgt): #, errfile):
+	url="http://api.geonames.org/neighbourhoodJSON?lat={0}&lng={1}&username=dbasner".format(lat,lgt)
+	try:
+		json_data = json.loads(urllib2.urlopen(url).readlines()[0])
+		neighbourhood = json_data['neighbourhood']['name']
+		print neighbourhood
+	except:
+		print json_data
+		if(json_data['status']['value'] != 15):
+			errWriter('Could not georesolve this lat/long: ' + str(lat) + ',' + str(lgt) + '\n')
+			raise
+
+def errWriter(string):
+	with open('rawoutput_failures.txt' ,'w') as fd:
+		fd.write(string)
+
 # Open the tripdata and faredata files at the same time
 with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	# Skip header lines
 	next(faredat)
 	next(tripdat)
 	# Open new csv which will hold the raw output
-	outputfile = open('rawoutput.csv', 'wb')
+	outputfile = open('rawoutput_basner.csv', 'wb')
 	output = csv.writer(outputfile, delimiter=',', quoting=csv.QUOTE_ALL)
 	errfile = open('rawoutput_err.txt', 'w')
 	# Initialize geo resolver
@@ -45,11 +63,8 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		while (attempts < 10):
 			try:
 				# Gets the geolocation based on LAT/LONG
-				location_pickup = geolocator.reverse(x[-3] + ',' + x[-4])
-				location_dropoff = geolocator.reverse(x[-1] + ',' + x[-2])
-				# If it works, print out the location
-				print(location_pickup.address)
-				print(location_dropoff.address)
+				location_dropoff = getN(x[-1], x[-2])
+				location_pickup = getN(x[-3], x[-4])
 				# Success cass, exit loop
 				break
 			# If the geo resolution times out
@@ -61,7 +76,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 				# Incrememt attempts
 				attempts += 1
 		if(attempts == 10):
-			errfile.write("Failed to geo resolve line: " + str(ctr) + "\t containing this: " + x[-3] + ',' + x[-4] + '\t' + x[-1] + ',' + x[2])
+			errfile.write("Failed to geo resolve line: " + str(ctr) + "\t containing this: " + x[-3] + ',' + x[-4] + '\t' + x[-1] + ',' + x[2] + '\n')
 		
 		# To show that the program has not crashed
 		ctr += 1
@@ -70,20 +85,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			# Build output line for .csv
 			output_line = x + y
 			
-			locp = location_pickup.address.split(',')
-			locd = location_dropoff.address.split(',')
-
-			# Sometimes splitting by commas doesn't yeild the right neighborhood. It might give the street instead. This hopefully fixes it
-			if(contains_digits(locp[2])):
-				locpf = locp[3]
-			else:
-				locpf = locp[2]
-			if(contains_digits(locd[2])):
-				locdf = locd[3]
-			else:
-				locdf = locd[2]
-	
-			location_line = [location_pickup.address, location_dropoff.address, locpf, locdf]
+			location_line = [location_pickup, location_dropoff]
 	
 			# Build full output here
 			output_line += location_line
@@ -95,9 +97,10 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			errfile.write("something went wrong in this line!! : " + str(ctr) + '\n' + ','.join(x) + '\n' + ','.join(y))
 			print("SOMETHING WENT WRONG IN THIS LINE: " + str(ctr))
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-		#if(ctr == 15):
-		#		break
+		if(ctr == 15):
+			break
 
 
 # Close line save file
 outputfile.close()
+errfile.close()

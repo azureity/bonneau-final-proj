@@ -44,6 +44,10 @@ with open('rawoutput.csv', 'r') as src:
 		if(dropoff_neigh not in nl):
 			nl.append(dropoff_neigh)
 
+
+		# Build output for time (4 hour long intervals starting from 12am)
+		
+
 		# Build the output line which is int he form: number, number, number : index of pickup, index of dropoff, fare cost
 		output_line = [nl.index(pickup_neigh), nl.index(dropoff_neigh), line.split(',')[19]]		
 
