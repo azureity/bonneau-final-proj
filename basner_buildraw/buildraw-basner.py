@@ -2,6 +2,9 @@ import argparse
 from geopy.geocoders import Nominatim
 from itertools import izip
 import csv
+import re
+import simplejson as json
+import urllib2
 
 # Add arguments for cli use
 parser = argparse.ArgumentParser(description='Sift through data')
@@ -12,6 +15,36 @@ args = parser.parse_args()
 # Line counter to keep track of line number in csv's
 ctr = 0
 
+def findGeoZip(array):
+	for i in array:
+		if str(i).isdigit():
+			return str(i)
+
+geolocator = Nominatim()
+
+def getN(lat, lgt): #, errfile):
+	url="http://api.geonames.org/findNearbyPostalCodesJSON?lat={0}&lng={1}&username=dbasner".format(lat,lgt)
+	try:
+		json_data = json.loads(urllib2.urlopen(url).readlines()[0])
+		zipc = json_data['postalCodes'][0]['postalCode']
+		print zipc
+		return zipc
+	except:
+		try:
+			location = geolocator.reverse(lat + ',' + lgt)
+			location = location.address.split(',')
+			print findGeoZip(location)
+			return findGeoZip(location)
+		except:
+			print json_data
+			if(json_data['status']['value'] != 15):
+				errWriter('Could not georesolve this lat/long: ' + str(lat) + ',' + str(lgt) + '\n')
+				raise
+
+def errWriter(string):
+	with open('rawoutput_failures.txt' ,'w') as fd:
+		fd.write(string)
+
 # Open the tripdata and faredata files at the same time
 with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	# Skip header lines
@@ -20,8 +53,8 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	# Open new csv which will hold the raw output
 	outputfile = open('rawoutput.csv', 'wb')
 	output = csv.writer(outputfile, delimiter=',', quoting=csv.QUOTE_ALL)
+	errfile = open('rawoutput_err.txt', 'w')
 	# Initialize geo resolver
-	geolocator = Nominatim()
 	# Go through each line in the fare and trip data
 	for x, y in izip(tripdat, faredat):
 		x_ori = x.strip()
@@ -39,34 +72,33 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		while (attempts < 10):
 			try:
 				# Gets the geolocation based on LAT/LONG
-				location_pickup = geolocator.reverse(x[-3] + ',' + x[-4])
-				location_dropoff = geolocator.reverse(x[-1] + ',' + x[-2])
-				# If it works, print out the location
-				print(location_pickup.address)
-				print(location_dropoff.address)
+				location_dropoff = getN(x[-1], x[-2])
+				location_pickup = getN(x[-3], x[-4])
 				# Success cass, exit loop
 				break
 			# If the geo resolution times out
-			except geopy.exc.GeocoderTimedOut:
+			except KeyboardInterrupt:
+				exit()
+			except:
 				# Log a failed resolution
 				print('failed to geo resolve line: ' + str(ctr) + '\t trying again until != 10 : #' + str(attempts))
 				# Incrememt attempts
 				attempts += 1
+		if(attempts == 10):
+			errfile.write("Failed to geo resolve line: " + str(ctr) + "\t containing this: " + x[-3] + ',' + x[-4] + '\t' + x[-1] + ',' + x[2] + '\n')
 		
 		# To show that the program has not crashed
 		ctr += 1
 
 		# Build output line for .csv
 		output_line = x + y
-		# Find the neighbrhodd in the list - NEIGHBORHOODS SHOULD BE IN INDEX -7
-		locsplitp = location_pickup.address.split(',')
-		locsplitd = location_dropoff.address.split(',')
-
-		# Builds all locations: pickup address, dropoff address, pickup neighborhood, dropoff neighborhood
-		location_line = [location_pickup.address, location_dropoff.address, locsplitp[-7], locsplitd[-7]]
+		
+		location_line = [location_pickup, location_dropoff]
 
 		# Build full output here
 		output_line += location_line
+
+		print(output_line)
 
 		# Write ROW, not write ROWS
 		output.writerow(output_line)
@@ -75,5 +107,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		if(ctr == 15):
 			break
 
-# Close files for cleanup
+
+# Close line save file
 outputfile.close()
+errfile.close()
