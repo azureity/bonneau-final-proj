@@ -19,17 +19,30 @@ _digits = re.compile('\d')
 def contains_digits(d):
 	return bool(_digits.search(d))
 
+geolocator = Nominatim()
+
 def getN(lat, lgt): #, errfile):
 	url="http://api.geonames.org/neighbourhoodJSON?lat={0}&lng={1}&username=dbasner".format(lat,lgt)
 	try:
 		json_data = json.loads(urllib2.urlopen(url).readlines()[0])
 		neighbourhood = json_data['neighbourhood']['name']
 		print neighbourhood
+		return neighbourhood
 	except:
-		print json_data
-		if(json_data['status']['value'] != 15):
-			errWriter('Could not georesolve this lat/long: ' + str(lat) + ',' + str(lgt) + '\n')
-			raise
+		try:
+			location = geolocator.reverse(lat + ',' + lgt)
+			location = location.address.split(',')
+			if(contains_digits(location[2])):
+				print location[3]
+				return location[3]
+			else:
+				print location[2]
+				return location[2]
+		except:
+			print json_data
+			if(json_data['status']['value'] != 15):
+				errWriter('Could not georesolve this lat/long: ' + str(lat) + ',' + str(lgt) + '\n')
+				raise
 
 def errWriter(string):
 	with open('rawoutput_failures.txt' ,'w') as fd:
@@ -41,11 +54,10 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	next(faredat)
 	next(tripdat)
 	# Open new csv which will hold the raw output
-	outputfile = open('rawoutput_basner.csv', 'wb')
+	outputfile = open('rawoutput.csv', 'wb')
 	output = csv.writer(outputfile, delimiter=',', quoting=csv.QUOTE_ALL)
 	errfile = open('rawoutput_err.txt', 'w')
 	# Initialize geo resolver
-	geolocator = Nominatim()
 	# Go through each line in the fare and trip data
 	for x, y in izip(tripdat, faredat):
 		x_ori = x.strip()
@@ -81,21 +93,19 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# To show that the program has not crashed
 		ctr += 1
 
-		try:
-			# Build output line for .csv
-			output_line = x + y
-			
-			location_line = [location_pickup, location_dropoff]
-	
-			# Build full output here
-			output_line += location_line
-	
-			# Write ROW, not write ROWS
-			output.writerow(output_line)
+		# Build output line for .csv
+		output_line = x + y
+		
+		location_line = [location_pickup, location_dropoff]
 
-		except:
-			errfile.write("something went wrong in this line!! : " + str(ctr) + '\n' + ','.join(x) + '\n' + ','.join(y))
-			print("SOMETHING WENT WRONG IN THIS LINE: " + str(ctr))
+		# Build full output here
+		output_line += location_line
+
+		print(output_line)
+
+		# Write ROW, not write ROWS
+		output.writerow(output_line)
+
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
 		if(ctr == 15):
 			break
