@@ -15,29 +15,26 @@ args = parser.parse_args()
 # Line counter to keep track of line number in csv's
 ctr = 0
 
-_digits = re.compile('\d')
-def contains_digits(d):
-	return bool(_digits.search(d))
+def findGeoZip(array):
+	for i in array:
+		if str(i).isdigit():
+			return str(i)
 
 geolocator = Nominatim()
 
 def getN(lat, lgt): #, errfile):
-	url="http://api.geonames.org/neighbourhoodJSON?lat={0}&lng={1}&username=dbasner".format(lat,lgt)
+	url="http://api.geonames.org/findNearbyPostalCodesJSON?lat={0}&lng={1}&username=dbasner".format(lat,lgt)
 	try:
 		json_data = json.loads(urllib2.urlopen(url).readlines()[0])
-		neighbourhood = json_data['neighbourhood']['name']
-		print neighbourhood
-		return neighbourhood
+		zipc = json_data['postalCodes'][0]['postalCode']
+		print zipc
+		return zipc
 	except:
 		try:
 			location = geolocator.reverse(lat + ',' + lgt)
 			location = location.address.split(',')
-			if(contains_digits(location[2])):
-				print location[3]
-				return location[3]
-			else:
-				print location[2]
-				return location[2]
+			print findGeoZip(location)
+			return findGeoZip(location)
 		except:
 			print json_data
 			if(json_data['status']['value'] != 15):
