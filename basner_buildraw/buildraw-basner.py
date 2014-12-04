@@ -33,7 +33,7 @@ def getN(lat, lgt): #, errfile):
 		try:
 			location = geolocator.reverse(lat + ',' + lgt)
 			location = location.address.split(',')
-			print findGeoZip(location)
+			print "from nominatim: " + str(findGeoZip(location))
 			return findGeoZip(location)
 		except:
 			print json_data
@@ -98,14 +98,14 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Build full output here
 		output_line += location_line
 
-		print(output_line)
+		#print(output_line)
 
 		# Write ROW, not write ROWS
 		output.writerow(output_line)
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-		if(ctr == 15):
-			break
+		#if(ctr == 15):
+		#	break
 
 
 # Close line save file
