@@ -17,6 +17,7 @@ args = parser.parse_args()
 
 # Line counter to keep track of line number in csv's
 ctr = 0
+errfile = open('rawoutput_err.txt' ,'w')
 
 # Open JSON data to read
 json_data = open('neighborhoods-shapedata.geojson')
@@ -53,12 +54,8 @@ def getN(lat, lgt, line_num):
 			return i['properties']['neighborhood']
 	# If it goes through every neighborhood and it doesn't return something, print this error message and log it into a log file
 	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
-	errWriter("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+	errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
 		
-		 
-def errWriter(string):
-	with open('rawoutput_failures.txt' ,'w') as fd:
-		fd.write(string)
 
 # Open the tripdata and faredata files at the same time
 with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
