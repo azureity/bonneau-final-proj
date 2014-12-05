@@ -27,8 +27,10 @@ data = json.load(json_data)
 def toTuple(listoflists):
 	return [tuple(x) for x in listoflists]	
 
+# Make a dictionary of {neighborhood shape : neighborhood }
 neighborhoods = dict()
 
+# Populate the dictionary once
 def buildN():
 	jdat = data['features']
 	for i in jdat:
@@ -38,23 +40,6 @@ buildN()
 
 # Gets the neighborhood based on lat/long comparing to polygons from the JSON data
 def getN(lat, lgt, line_num):
-	'''
-	# Get relevant part of JSON data
-	jdat = data['features']
-	# For each neighborhood in the dataset
-	for i in jdat:
-		# Build a polygon based on the coordinates given by the JSON data
-		poly = Polygon(toTuple(i['geometry']['coordinates'][0]))
-		# Build a point object
-		point = Point(lat, lgt)
-		# If the point is within the polygon
-		if point.within(poly) :
-			# Return the neighborhood
-			return i['properties']['neighborhood']
-	# If it goes through every neighborhood and it doesn't return something, print this error message and log it into a log file
-	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
-	errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
-	'''
 	point = Point(lat, lgt)
 	for key in neighborhoods:
 		if point.within(key):
