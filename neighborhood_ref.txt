@@ -1,0 +1,95 @@
+0	Midtown
+1	West Village
+2	Chelsea
+3	SoHo
+4	Theater District
+5	Murray Hill
+6	Upper East Side
+7	LaGuardia Airport
+8	Kips Bay
+9	Gramercy
+10	Upper West Side
+11	Harlem
+12	Hell's Kitchen
+13	Nolita
+14	Financial District
+15	John F. Kennedy International Airport
+16	Greenwich Village
+17	Boerum Hill
+18	Red Hook
+19	Morningside Heights
+20	Prospect Heights
+21	Sunnyside
+22	East Harlem
+23	NoHo
+24	Williamsburg
+25	Astoria
+26	Greenpoint
+27	Borough Park
+28	Flatiron District
+29	Long Island City
+30	Maspeth
+31	Inwood
+32	Central Park
+33	Chinatown
+34	Park Slope
+35	None
+36	Stuyvesant Town
+37	Lower East Side
+38	East Village
+39	Tribeca
+40	Carroll Gardens
+41	Sheepshead Bay
+42	Little Italy
+43	Brooklyn Heights
+44	Gravesend
+45	Washington Heights
+46	Forest Hills
+47	College Point
+48	Bay Ridge
+49	Ozone Park
+50	Bushwick
+51	Gowanus
+52	South Slope
+53	Civic Center
+54	Cobble Hill
+55	Battery Park City
+56	Downtown Brooklyn
+57	Columbia St
+58	Two Bridges
+59	Rego Park
+60	Sunset Park
+61	Bedford-Stuyvesant
+62	Woodside
+63	Crown Heights
+64	Windsor Terrace
+65	Kew Gardens
+66	Ditmars Steinway
+67	Glen Oaks
+68	Fort Greene
+69	Flatbush
+70	Brighton Beach
+71	Mount Hope
+72	Hunts Point
+73	Longwood
+74	Flushing
+75	Clinton Hill
+76	Dyker Heights
+77	Corona
+78	Wakefield
+79	Bronx Park
+80	Randall's Island
+81	Marine Park
+82	Douglaston
+83	Elmhurst
+84	Claremont Village
+85	Briarwood
+86	Spuyten Duyvil
+87	Jackson Heights
+88	East Elmhurst
+89	Fordham
+90	DUMBO
+91	Glendale
+92	Howard Beach
+93	Flatlands
+94	Springfield Gardens

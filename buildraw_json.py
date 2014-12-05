@@ -47,6 +47,18 @@ def getN(lat, lgt, line_num):
 	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
         errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
 
+nl = []
+
+def stripEscape(string):
+        """ Removes all escape sequences from the input string """
+        delete = ""
+        i = 1
+        while (i < 0x20):
+                delete += chr(i)
+                i += 1
+        t = string.translate(None, delete)
+        return t
+
 
 # Open the tripdata and faredata files at the same time
 with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
@@ -56,6 +68,9 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 	# Open new csv which will hold the raw output
 	outputfile = open('rawoutput.csv', 'wb')
 	output = csv.writer(outputfile, delimiter=',', quoting=csv.QUOTE_ALL)
+
+	binoutputfile = open('binoutput.csv', 'wb')
+	binoutput = csv.writer(binoutputfile, delimiter=',', quoting=csv.QUOTE_ALL)
 	# Go through each line in the fare and trip data
 	for x, y in izip(tripdat, faredat):
 		x_ori = x.strip()
@@ -90,6 +105,18 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Write ROW, not write ROWS
 		output.writerow(output_line)
 
+
+		if(location_pickup not in nl):
+                        nl.append(location_pickup)
+                if(location_dropoff not in nl):
+                        nl.append(location_dropoff)
+
+		binoutputline = [nl.index(location_pickup), nl.index(location_dropoff), output_line[19]]
+
+		binoutput.writerow(binoutputline)
+		print("Bin output writing line: " + str(ctr))
+
+
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
 		if(ctr == 1000):
 			break
@@ -98,5 +125,12 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 # Close opened files
 outputfile.close()
 json_data.close()
+binoutputfile.close()
+
+nle = enumerate(nl)
+with open('neighborhood_ref.txt', 'w') as ref:
+        for item in nle:
+                ref.write(str(item[0]) + '\t' +  str(item[1]) + '\n')
+
 
 print("Time it took to run (in seconds): " + str(time.time() - start_time))
