@@ -27,19 +27,18 @@ data = json.load(json_data)
 def toTuple(listoflists):
 	return [tuple(x) for x in listoflists]	
 
-'''
+neighborhoods = dict()
 
-	THIS CAN BE MADE TO RUN FASTER.
-	Right now, every time getN is called (which is twice per line of the .csv files),
-		it parses through each of the neighborhoods and builds the polygon of that neighborhood's bounds
-		then it makes a point and checks to see if that point exists in the polygon
-	It would be better if we don't have to create a lot of polygons every time getN runs.
-	
-	One potential fix is to build a dictionary (in the global scope of this script) that holds {polygon object: neighborhood name} so that we can check through every polygon object then immediately return the neighborhood.
+def buildN():
+	jdat = data['features']
+	for i in jdat:
+		neighborhoods[Polygon(toTuple(i['geometry']['coordinates'][0]))] = i['properties']['neighborhood']
 
-'''
+buildN()
+
 # Gets the neighborhood based on lat/long comparing to polygons from the JSON data
 def getN(lat, lgt, line_num):
+	'''
 	# Get relevant part of JSON data
 	jdat = data['features']
 	# For each neighborhood in the dataset
@@ -55,7 +54,14 @@ def getN(lat, lgt, line_num):
 	# If it goes through every neighborhood and it doesn't return something, print this error message and log it into a log file
 	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
 	errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
-		
+	'''
+	point = Point(lat, lgt)
+	for key in neighborhoods:
+		if point.within(key):
+			return neighborhoods[key]
+	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+        errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+
 
 # Open the tripdata and faredata files at the same time
 with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
