@@ -6,6 +6,8 @@ from shapely.geometry import MultiPoint
 from shapely.geometry import Point
 import json
 import time
+from scipy.stats import kstest
+import numpy as np
 
 start_time = time.time()
 
@@ -29,6 +31,8 @@ def toTuple(listoflists):
 
 # Make a dictionary of {neighborhood shape : neighborhood }
 neighborhoods = dict()
+# {tuple of edge : list of fares}
+nbins = dict()
 
 # Populate the dictionary once
 def buildN():
@@ -105,21 +109,52 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Write ROW, not write ROWS
 		output.writerow(output_line)
 
-
+		# Keep a set of locations	
 		if(location_pickup not in nl):
                         nl.append(location_pickup)
                 if(location_dropoff not in nl):
                         nl.append(location_dropoff)
 
+		# Bin output line which consists of (num, num, fare)
 		binoutputline = [nl.index(location_pickup), nl.index(location_dropoff), output_line[19]]
 
 		binoutput.writerow(binoutputline)
 		print("Bin output writing line: " + str(ctr))
 
+		# Create a locations tuple (pickup index, dropoff index)
+		ltuple = (nl.index(location_pickup), nl.index(location_dropoff))
+		# If tuple is not in dict, create it with it's value an array consisting of fares.
+		if(ltuple not in nbins):
+			nbins[ltuple] = [output_line[19]]
+		# Else, append to the value array
+		else:
+			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
 		if(ctr == 1000):
 			break
+
+	
+	# Create a new list
+	fnbins = list()
+
+	# Sort the dictionary by key and iterate through it
+	for key in sorted(nbins):
+		# Create a list as the output line
+		line = [key, nbins[key]]
+		# All fares are strings so I map every item to a float value
+		intfares = map(float,nbins[key])
+		# Create a ndarray object
+		myarray = np.asarray(intfares)
+		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
+		line.append(kstest(myarray, 'norm'))
+		# Add the output line into the final list
+		fnbins.append(line)
+	
+	# Write the final list into an output file
+	with open('finaloutput.csv' ,'w') as f:
+		writer = csv.writer(f)
+		writer.writerows(fnbins)
 
 
 # Close opened files
