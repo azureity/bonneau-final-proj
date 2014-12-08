@@ -2,6 +2,9 @@ data <- read.csv( file = "bonneau-final-proj/finaloutput.csv")
 
 mat <- as.matrix(data)
 
+#################################
+# Sorting
+#################################
 sort.array = function(input,locations) {
   num_passes = 0
   while(1) {
@@ -50,12 +53,24 @@ for (n in 1:num.rows) {
 } 
 rm(n)
 
-location.array <- array(num.rows)
+location.array <- array(dim=num.rows)
 sorted.data <- sort.array(as.numeric(p.array[,2]),p.array[,1])
 
 show(sorted.data)
 
 plot(sorted.data[,2])
+
+#################################
+# Reduced Graph
+#################################
+
+reduced.array <- array(dim=184)
+for (x in 3300:3484) {
+  reduced.array[x-3299] <- sorted.data[x,2]
+}
+
+plot(reduced.array)
+  
 
 
 #################################
