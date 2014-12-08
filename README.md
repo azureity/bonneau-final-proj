@@ -20,4 +20,5 @@
 
 	Alternatives:
 	A) Examine tip data to find highest and lowest tipped areas of manhattan/NY
+	B) Somethign with time
 	
