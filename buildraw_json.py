@@ -131,7 +131,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-		if(ctr == 100000):
+		if(ctr == 1500000):
 			break
 
 	
