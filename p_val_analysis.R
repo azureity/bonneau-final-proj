@@ -60,6 +60,7 @@ show(sorted.data)
 
 plot(sorted.data[,2])
 
+
 #################################
 # Reduced Graph
 #################################
@@ -72,11 +73,11 @@ for (x in 3300:3484) {
 plot(reduced.array)
   
 
-
 #################################
 # Histogram of Prices
 #################################
 
+#function?
 list <- as.character(mat[1,2])
 list_1 <- gsub(",","", list)
 list_2 <- gsub("'","",list_1)
@@ -89,10 +90,51 @@ vector <- c()
 
 for (n in 1:length(new_list[[1]])) {
   vector[n] <- new_list[[1]][n]
-} 
+}
 rm(n)
 
 prices <- as.numeric(vector)
 
 hist(prices)
 
+#################################
+# Average Graph
+#################################
+
+neighborhood_ref <- read.csv("bonneau-final-proj/neighborhood_ref.txt")
+num_neighborhoods <- nrow(neighborhood_ref)
+
+avg_prices <- array(0, dim=num_neighborhoods)
+prices_count <- array(0, dim=num_neighborhoods)
+index <- 1;
+for (y in 1:length(mat[,1])){
+  base_sum <- 0
+  char_cpy <- toString(as.character(mat[y,1]))
+  char_split <-strsplit(char_cpy,",")
+  index <- as.numeric(gsub("\\(", "", char_split[[1]][1]))
+  
+  #function?
+  list <- as.character(mat[y,2])
+  list_1 <- gsub(",","", list)
+  list_2 <- gsub("'","",list_1)
+  list_3 <- gsub("\\[", "", list_2)
+  list_4 <- gsub("\\]", "", list_3)
+  new_list <- strsplit(list_4, " ")
+  vector <- c()
+  for (n in 1:length(new_list[[1]])) {
+    vector[n] <- new_list[[1]][n]
+  }
+  prices <- as.numeric(vector)
+  rm(list, list_1, list_2, list_3, list_4, new_list, vector)
+  
+  
+  for (z in 1:length(prices)) {
+    base_sum <- base_sum + prices[z]
+    prices_count[index] <- prices_count[index] + 1
+  }
+  avg_prices[index] <- avg_prices[index] + base_sum
+}
+
+for (x in 1:length(avg_prices)) {
+  avg_prices[x] <- avg_prices[x]/prices_count[x]
+}
