@@ -147,7 +147,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Create a ndarray object
 		myarray = np.asarray(intfares)
 		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
-		line.append(kstest(myarray, 'wald'))
+		line.append(kstest(myarray, 'vonwises'))
 		# Add the output line into the final list
 		fnbins.append(line)
 	

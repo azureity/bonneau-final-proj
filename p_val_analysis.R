@@ -60,14 +60,16 @@ show(sorted.data)
 
 plot(sorted.data[,2])
 
+write.csv(format(sorted.data, scientific=FALSE), file = "sorted_p_vals.csv")
+
 
 #################################
 # Reduced Graph
 #################################
 
-reduced.array <- array(dim=184)
-for (x in 3300:3484) {
-  reduced.array[x-3299] <- sorted.data[x,2]
+reduced.array <- array(dim=219)
+for (x in 9000:9219) {
+  reduced.array[x-8999] <- sorted.data[x,2]
 }
 
 plot(reduced.array)
@@ -77,25 +79,47 @@ plot(reduced.array)
 # Histogram of Prices
 #################################
 
-#function?
-list <- as.character(mat[1,2])
-list_1 <- gsub(",","", list)
-list_2 <- gsub("'","",list_1)
-list_3 <- gsub("\\[", "", list_2)
-list_4 <- gsub("\\]", "", list_3)
-rm(list, list_1, list_2, list_3)
-
-new_list <- strsplit(list_4, " ")
-vector <- c()
-
-for (n in 1:length(new_list[[1]])) {
-  vector[n] <- new_list[[1]][n]
+# Example of smallest p val (0)
+plot.histogram <- function(mat,row) {
+  list <- as.character(mat[row,2])
+  list_1 <- gsub(",","", list)
+  list_2 <- gsub("'","",list_1)
+  list_3 <- gsub("\\[", "", list_2)
+  list_4 <- gsub("\\]", "", list_3)
+  rm(list, list_1, list_2, list_3)
+  
+  new_list <- strsplit(list_4, " ")
+  vector <- c()
+  
+  for (n in 1:length(new_list[[1]])) {
+    vector[n] <- new_list[[1]][n]
+  }
+  rm(n)
+  
+  prices <- as.numeric(vector)
+  
+  h<-hist(prices, breaks=10, col="red", xlab="Miles Per Gallon", 
+          main="Histogram with Normal Curve") 
+  xfit<-seq(min(prices),max(prices),length=40) 
+  yfit<-dnorm(xfit,mean=mean(prices),sd=sd(prices)) 
+  yfit <- yfit*diff(h$mids[1:2])*length(prices) 
+  lines(xfit, yfit, col="blue", lwd=2)
 }
-rm(n)
+# Example of smallest p val (0)
+plot.histogram(mat,1)
 
-prices <- as.numeric(vector)
+# Example of largest p val
+lg_pval_location <- sorted.data[num.rows-4000]
+lg_pval_index <- -1
+for (x in 1:num.rows) {
+  if (mat[x,1] == lg_pval_location) {
+    lg_pval_index <- x
+  }
+}
 
-hist(prices)
+
+plot.histogram(mat,lg_pval_index)
+
 
 #################################
 # Average Graph
