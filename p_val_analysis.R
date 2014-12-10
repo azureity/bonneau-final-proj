@@ -98,8 +98,8 @@ plot.histogram <- function(mat,row) {
   
   prices <- as.numeric(vector)
   
-  h<-hist(prices, breaks=10, col="red", xlab="Miles Per Gallon", 
-          main="Histogram with Normal Curve") 
+  h<-hist(prices, breaks=10, col="red", 
+          main="Histogram") 
   xfit<-seq(min(prices),max(prices),length=40) 
   yfit<-dnorm(xfit,mean=mean(prices),sd=sd(prices)) 
   yfit <- yfit*diff(h$mids[1:2])*length(prices) 
