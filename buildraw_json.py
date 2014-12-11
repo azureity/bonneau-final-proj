@@ -49,7 +49,8 @@ def getN(lat, lgt, line_num):
 		if point.within(key):
 			return neighborhoods[key]
 	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
-        errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+	errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+	return "string_failed"
 
 nl = []
 
@@ -88,6 +89,9 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Launch function to get the neighborhood based on lat/long
 		location_pickup = getN(float(x[-4]),float(x[-3]), ctr)
 		location_dropoff = getN(float(x[-2]), float(x[-1]), ctr)
+
+		if(location_pickup == "string_failed" or location_dropoff == "string_failed"):
+			continue
 
 		# Logging
 		#print(location_pickup)
@@ -133,7 +137,11 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
+<<<<<<< Updated upstream
 		if(ctr == 1000):
+=======
+		if(ctr == 500000):
+>>>>>>> Stashed changes
 			break
 
 	
@@ -148,10 +156,19 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		intfares = map(float,nbins[key])
 		# Create a ndarray object
 		myarray = np.asarray(intfares)
+<<<<<<< Updated upstream
 		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
 		line.append(kstest(myarray, 'norm'))
 		# Add the output line into the final list
 		fnbins.append(line)
+=======
+
+		if (len(myarray) > 50):
+			# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
+			line.append(kstest(myarray, "norm"))
+			# Add the output line into the final list
+			fnbins.append(line)
+>>>>>>> Stashed changes
 	
 	# Write the final list into an output file
 	with open('finaloutput.csv' ,'w') as f:
