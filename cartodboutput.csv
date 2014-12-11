@@ -1,189 +1,189 @@
 neighborhood,average_fare
-Midtown,10.309760058769937
-West Village,10.481541552125185
-Chelsea,10.249643893879728
-SoHo,11.33636194142058
-Theater District,11.058471892319872
-Murray Hill,10.288662409346303
-Upper East Side,9.909679423121132
-LaGuardia Airport,29.370675501247746
-Kips Bay,9.830268013206448
-Gramercy,10.13088945283486
-Upper West Side,10.326501019566335
-Harlem,13.164801366937207
-Hell's Kitchen,10.925708170269896
-Nolita,11.100638377769434
-Financial District,15.540802967488546
-John F. Kennedy International Airport,45.52323189307827
-Greenwich Village,10.300854353132628
-Boerum Hill,14.224834983498349
-Red Hook,15.348101265822784
-Morningside Heights,12.451705486256762
-Prospect Heights,15.722814498933902
-Sunnyside,14.985438335809807
-East Harlem,11.369546462903623
-NoHo,10.566584967320262
-Williamsburg,13.076460481099657
-Astoria,14.322115384615385
-Greenpoint,13.182987848463188
-Borough Park,14.370503597122303
-Flatiron District,9.697673023869497
-Long Island City,13.935835461510397
-Maspeth,20.82088122605364
-Inwood,18.452380952380953
-Central Park,10.049737431129477
-Chinatown,12.130470761309304
-Park Slope,14.275987020010817
-None,16.302801247130557
-Stuyvesant Town,10.76782729805014
-Lower East Side,12.227604227151318
-East Village,10.865312667022982
-Tribeca,12.231176540190896
-Carroll Gardens,14.823435582822087
-Sheepshead Bay,13.430555555555555
-Little Italy,11.596967108073473
-Brooklyn Heights,15.68498904309715
+Midtown,10.31
+West Village,10.48
+Chelsea,10.25
+SoHo,11.34
+Theater District,11.06
+Murray Hill,10.29
+Upper East Side,9.91
+LaGuardia Airport,29.37
+Kips Bay,9.83
+Gramercy,10.13
+Upper West Side,10.33
+Harlem,13.16
+Hell's Kitchen,10.93
+Nolita,11.1
+Financial District,15.54
+John F. Kennedy International Airport,45.52
+Greenwich Village,10.3
+Boerum Hill,14.22
+Red Hook,15.35
+Morningside Heights,12.45
+Prospect Heights,15.72
+Sunnyside,14.99
+East Harlem,11.37
+NoHo,10.57
+Williamsburg,13.08
+Astoria,14.32
+Greenpoint,13.18
+Borough Park,14.37
+Flatiron District,9.7
+Long Island City,13.94
+Maspeth,20.82
+Inwood,18.45
+Central Park,10.05
+Chinatown,12.13
+Park Slope,14.28
+None,16.3
+Stuyvesant Town,10.77
+Lower East Side,12.23
+East Village,10.87
+Tribeca,12.23
+Carroll Gardens,14.82
+Sheepshead Bay,13.43
+Little Italy,11.6
+Brooklyn Heights,15.68
 Gravesend,17.28
-Washington Heights,17.255200405885336
-Forest Hills,15.599520000000002
-College Point,20.210526315789473
-Bay Ridge,14.136363636363637
-Ozone Park,17.37837837837838
-Bushwick,15.134396355353076
-Gowanus,15.422196796338673
-South Slope,16.33009708737864
-Civic Center,13.066009104704097
-Cobble Hill,14.675272727272727
-Battery Park City,14.934749176125962
-Downtown Brooklyn,14.989708404802744
-Columbia St,27.42361111111111
-Two Bridges,12.630530973451327
-Rego Park,15.601767676767677
-Sunset Park,17.369731800766285
-Bedford-Stuyvesant,13.82768361581921
-Woodside,17.49770642201835
-Crown Heights,14.63389221556886
-Windsor Terrace,15.132352941176471
-Kew Gardens,21.276470588235295
-Ditmars Steinway,14.477787851314597
-Fort Greene,14.381922342457035
+Washington Heights,17.26
+Forest Hills,15.6
+College Point,20.21
+Bay Ridge,14.14
+Ozone Park,17.38
+Bushwick,15.13
+Gowanus,15.42
+South Slope,16.33
+Civic Center,13.07
+Cobble Hill,14.68
+Battery Park City,14.93
+Downtown Brooklyn,14.99
+Columbia St,27.42
+Two Bridges,12.63
+Rego Park,15.6
+Sunset Park,17.37
+Bedford-Stuyvesant,13.83
+Woodside,17.5
+Crown Heights,14.63
+Windsor Terrace,15.13
+Kew Gardens,21.28
+Ditmars Steinway,14.48
+Fort Greene,14.38
 Flatbush,14.99
-Brighton Beach,23.175
-Mount Hope,11.166666666666666
-Hunts Point,12.833333333333334
-Longwood,13.360294117647058
-Flushing,20.54252475247525
-Clinton Hill,13.697802197802197
-Dyker Heights,10.6875
-Corona,32.30337078651685
-Wakefield,15.272727272727273
-Bronx Park,13.285714285714286
-Randall's Island,29.06122448979592
-Marine Park,16.944444444444443
+Brighton Beach,23.18
+Mount Hope,11.17
+Hunts Point,12.83
+Longwood,13.36
+Flushing,20.54
+Clinton Hill,13.7
+Dyker Heights,10.69
+Corona,32.3
+Wakefield,15.27
+Bronx Park,13.29
+Randall's Island,29.06
+Marine Park,16.94
 Douglaston,11.0
-Elmhurst,16.428571428571427
-Claremont Village,13.096153846153847
-Briarwood,36.04034090909091
-Spuyten Duyvil,14.428571428571429
-Jackson Heights,14.918411016949152
-East Elmhurst,24.951116333725032
-Fordham,13.131578947368421
-DUMBO,15.002097902097901
-Glendale,13.535714285714286
+Elmhurst,16.43
+Claremont Village,13.1
+Briarwood,36.04
+Spuyten Duyvil,14.43
+Jackson Heights,14.92
+East Elmhurst,24.95
+Fordham,13.13
+DUMBO,15.0
+Glendale,13.54
 Howard Beach,7.6
-Flatlands,17.666666666666668
-Springfield Gardens,38.212765957446805
-Soundview,13.76923076923077
-Prospect Park,15.102564102564102
-Prospect-Lefferts Gardens,19.181818181818183
-Vinegar Hill,13.865853658536585
-South Ozone Park,48.103873239436616
-Jamaica,46.00373831775701
-Mott Haven,14.430084745762711
-Concourse,12.396153846153846
+Flatlands,17.67
+Springfield Gardens,38.21
+Soundview,13.77
+Prospect Park,15.1
+Prospect-Lefferts Gardens,19.18
+Vinegar Hill,13.87
+South Ozone Park,48.1
+Jamaica,46.0
+Mott Haven,14.43
+Concourse,12.4
 Kew Gardens Hills,14.5
-Hollis,26.416666666666668
+Hollis,26.42
 East Flatbush,17.0
-Roosevelt Island,13.124324324324323
-Parkchester,14.89655172413793
+Roosevelt Island,13.12
+Parkchester,14.9
 New Dorp,13.25
-Bergen Beach,19.166666666666668
-Kingsbridge,14.895522388059701
+Bergen Beach,19.17
+Kingsbridge,14.9
 Bath Beach,13.4
-Bellerose,11.61111111111111
-Kensington,12.820680628272251
-Flushing Meadows Corona Park,45.45945945945946
+Bellerose,11.61
+Kensington,12.82
+Flushing Meadows Corona Park,45.46
 Bayside,24.5
 Mill Basin,22.25
-Concourse Village,10.658536585365853
+Concourse Village,10.66
 Olinville,10.0
-Mount Eden,14.090909090909092
-Tremont,11.047619047619047
-Morris Heights,12.113372093023257
-Fort Hamilton,21.42105263157895
-Belmont,14.694444444444445
+Mount Eden,14.09
+Tremont,11.05
+Morris Heights,12.11
+Fort Hamilton,21.42
+Belmont,14.69
 Fresh Meadows,11.75
-Ridgewood,16.205882352941178
-Melrose,12.590909090909092
-North Riverdale,15.142857142857142
+Ridgewood,16.21
+Melrose,12.59
+North Riverdale,15.14
 Pelham Gardens,21.2
 Floyd Bennett Field,29.0
-Van Cortlandt Park,10.541666666666666
-East New York,22.88888888888889
-Van Nest,16.333333333333332
-Middle Village,16.710526315789473
-Midwood,16.48051948051948
-East Morrisania,11.73076923076923
-Woodhaven,19.413793103448278
+Van Cortlandt Park,10.54
+East New York,22.89
+Van Nest,16.33
+Middle Village,16.71
+Midwood,16.48
+East Morrisania,11.73
+Woodhaven,19.41
 Riverdale,15.0
-Richmond Hill,33.03860335195531
-Bensonhurst,22.275000000000002
-Highbridge,9.660714285714286
-Jamaica Estates,26.058823529411764
+Richmond Hill,33.04
+Bensonhurst,22.28
+Highbridge,9.66
+Jamaica Estates,26.06
 Throgs Neck,20.75
 Woodlawn,8.3
 Williamsbridge,6.0
-Jamaica Hills,14.444444444444445
-University Heights,9.342105263157896
-Unionport,23.30952380952381
+Jamaica Hills,14.44
+University Heights,9.34
+Unionport,23.31
 Green-Wood Cemetery,9.0
-Schuylerville,9.125
-Brownsville,12.805555555555555
+Schuylerville,9.13
+Brownsville,12.81
 Laurelton,10.5
-Port Morris,12.717821782178218
+Port Morris,12.72
 Holliswood,25.0
-Westchester Square,11.054054054054054
-Cypress Hills,19.18421052631579
+Westchester Square,11.05
+Cypress Hills,19.18
 Canarsie,18.94
 Clason Point,12.0
-Marble Hill,19.8125
+Marble Hill,19.81
 West Farms,15.0
-Fieldston,8.61111111111111
+Fieldston,8.61
 Concord,18.6
 Whitestone,32.4
 Cambria Heights,12.75
 Rosedale,26.5
-St. Albans,17.555555555555557
-Bay Terrace,10.666666666666666
+St. Albans,17.56
+Bay Terrace,10.67
 St. George,33.5
-Norwood,13.571428571428571
+Norwood,13.57
 Morris Park,8.4
 Allerton,12.85
-Navy Yard,14.925
-Queens Village,17.892857142857142
-Floral Park,28.875
-Stapleton,24.88888888888889
+Navy Yard,14.93
+Queens Village,17.89
+Floral Park,28.88
+Stapleton,24.89
 Broad Channel,44.0
 Morrisania,13.05
 South Beach,20.0
 Ellis Island,16.0
 Co-op City,22.75
-Country Club,9.333333333333334
+Country Club,9.33
 Forest Park,13.75
 Little Neck,9.0
 Bronxdale,19.75
-Manhattan Beach,8.444444444444445
-Ferry Point Park,70.41666666666667
+Manhattan Beach,8.44
+Ferry Point Park,70.42
 Plum Beach,55.5
 Castleton Corners,15.75
 Baychester,13.5
@@ -192,28 +192,28 @@ Emerson Hill,6.5
 Pelham Bay Park,7.0
 Westerleigh,6.1
 Edenwald,13.7
-Cunningham Park,33.666666666666664
+Cunningham Park,33.67
 Belle Harbor,97.1
 Shore Acres,4.0
 Todt Hill,39.0
-Pelham Bay,19.375
+Pelham Bay,19.38
 Governors Island,11.5
 Mariners Harbor,13.5
 Coney Island,29.25
-Castle Hill,13.375
+Castle Hill,13.38
 Midland Beach,10.0
 Park Hill,55.25
-Bull's Head,9.583333333333334
-Graniteville,5.416666666666667
+Bull's Head,9.58
+Graniteville,5.42
 Arverne,80.0
 Silver Lake,9.75
 Arrochar,62.5
 Woodrow,10.5
 Arden Heights,4.0
 Rossville,7.5
-New Springville,9.481132075471699
+New Springville,9.48
 Breezy Point,5.5
-Clifton,6.875
+Clifton,6.88
 Eltingville,7.0
 Rikers Island,9.5
 Freshkills Park,9.25

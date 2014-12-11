@@ -43,7 +43,7 @@ with open('finaloutput.csv', 'rb') as fd:
 
 for item in olist:
 	item[1] = map(float, item[1])
-	item[1] = sum(item[1]) / len(item[1])
+	item[1] = round(sum(item[1]) / len(item[1]), 2)
 
 
 def getNeighs():
