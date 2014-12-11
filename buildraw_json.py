@@ -83,15 +83,15 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		y = y_ori.split(',')
 
 		# To show that the program has not crashed and is working
-		print('line ' + str(ctr) + '\tworking...')
+		#print('line ' + str(ctr) + '\tworking...')
 		
 		# Launch function to get the neighborhood based on lat/long
 		location_pickup = getN(float(x[-4]),float(x[-3]), ctr)
 		location_dropoff = getN(float(x[-2]), float(x[-1]), ctr)
 
 		# Logging
-		print(location_pickup)
-		print(location_dropoff)
+		#print(location_pickup)
+		#print(location_dropoff)
 
 		# To show that the program has not crashed
 		ctr += 1
@@ -116,10 +116,12 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
                         nl.append(location_dropoff)
 
 		# Bin output line which consists of (num, num, fare)
-		binoutputline = [nl.index(location_pickup), nl.index(location_dropoff), output_line[19]]
+		binoutputline = [nl.index(location_pickup), nl.index(location_dropoff), output_line[19], output_line[5].lstrip()]
 
 		binoutput.writerow(binoutputline)
-		print("Bin output writing line: " + str(ctr))
+
+		if(ctr%5000 == 0):
+			print("Script working... line #: " + str(ctr))
 
 		# Create a locations tuple (pickup index, dropoff index)
 		ltuple = (nl.index(location_pickup), nl.index(location_dropoff))
@@ -131,7 +133,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-		if(ctr == 1500000):
+		if(ctr == 1000):
 			break
 
 	
@@ -147,7 +149,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Create a ndarray object
 		myarray = np.asarray(intfares)
 		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
-		line.append(kstest(myarray, 'vonwises'))
+		line.append(kstest(myarray, 'norm'))
 		# Add the output line into the final list
 		fnbins.append(line)
 	
