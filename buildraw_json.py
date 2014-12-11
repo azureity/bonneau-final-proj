@@ -137,11 +137,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-<<<<<<< Updated upstream
-		if(ctr == 1000):
-=======
 		if(ctr == 500000):
->>>>>>> Stashed changes
 			break
 
 	
@@ -156,19 +152,17 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		intfares = map(float,nbins[key])
 		# Create a ndarray object
 		myarray = np.asarray(intfares)
-<<<<<<< Updated upstream
 		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
 		line.append(kstest(myarray, 'norm'))
 		# Add the output line into the final list
 		fnbins.append(line)
-=======
+
 
 		if (len(myarray) > 50):
 			# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
 			line.append(kstest(myarray, "norm"))
 			# Add the output line into the final list
 			fnbins.append(line)
->>>>>>> Stashed changes
 	
 	# Write the final list into an output file
 	with open('finaloutput.csv' ,'w') as f:
