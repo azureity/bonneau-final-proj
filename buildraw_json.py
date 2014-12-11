@@ -48,7 +48,7 @@ def getN(lat, lgt, line_num):
 	for key in neighborhoods:
 		if point.within(key):
 			return neighborhoods[key]
-	print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
+	#print("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
 	errfile.write("Failed to find the neighborhood of this lat/long: " + str(lat) + "," + str(lgt) + "\tLine:" + str(line_num) + "\n")
 	return "string_failed"
 
@@ -124,8 +124,8 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 
 		binoutput.writerow(binoutputline)
 
-		if(ctr%5000 == 0):
-			print("Script working... line #: " + str(ctr))
+		if (ctr%5000 == 0):
+			print("Script working... line #:" + str(ctr))
 
 		# Create a locations tuple (pickup index, dropoff index)
 		ltuple = (nl.index(location_pickup), nl.index(location_dropoff))
@@ -137,7 +137,7 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 			nbins[ltuple].append(output_line[19])
 
 		# Test with 15 lines - COMMENT OUT OR DELETE IN PRODUCTION
-		if(ctr == 500000):
+		if(ctr == 20000):
 			break
 
 	
@@ -153,16 +153,9 @@ with open(args.tripdat) as tripdat, open(args.faredat) as faredat:
 		# Create a ndarray object
 		myarray = np.asarray(intfares)
 		# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
-		line.append(kstest(myarray, 'norm'))
+		line.append(kstest(myarray, "norm"))
 		# Add the output line into the final list
 		fnbins.append(line)
-
-
-		if (len(myarray) > 50):
-			# Run a kstest on the ndarray object and compare it to a normal distribution- append it to the output line
-			line.append(kstest(myarray, "norm"))
-			# Add the output line into the final list
-			fnbins.append(line)
 	
 	# Write the final list into an output file
 	with open('finaloutput.csv' ,'w') as f:
