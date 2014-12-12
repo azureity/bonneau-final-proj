@@ -43,6 +43,8 @@ with open('finaloutput.csv', 'rb') as fd:
 
 for item in olist:
 	item[1] = map(float, item[1])
+	item.append(len(item[1]))
+	item.append(max(item[1]))
 	item[1] = round(sum(item[1]) / len(item[1]), 2)
 
 
@@ -65,6 +67,6 @@ for item in olist:
 
 with open('cartodboutput.csv', 'w') as fd:
 	fdwriter = csv.writer(fd)
-	fdwriter.writerow(['neighborhood', 'average_fare'])
+	fdwriter.writerow(['neighborhood', 'Average Fare', 'Total Rides', 'Mean Fare'])
 	fdwriter.writerows(olist)
 

@@ -1,219 +1,56 @@
-neighborhood,average_fare
-Midtown,10.31
-West Village,10.48
-Chelsea,10.25
-SoHo,11.34
-Theater District,11.06
-Murray Hill,10.29
-Upper East Side,9.91
-LaGuardia Airport,29.37
-Kips Bay,9.83
-Gramercy,10.13
-Upper West Side,10.33
-Harlem,13.16
-Hell's Kitchen,10.93
-Nolita,11.1
-Financial District,15.54
-John F. Kennedy International Airport,45.52
-Greenwich Village,10.3
-Boerum Hill,14.22
-Red Hook,15.35
-Morningside Heights,12.45
-Prospect Heights,15.72
-Sunnyside,14.99
-East Harlem,11.37
-NoHo,10.57
-Williamsburg,13.08
-Astoria,14.32
-Greenpoint,13.18
-Borough Park,14.37
-Flatiron District,9.7
-Long Island City,13.94
-Maspeth,20.82
-Inwood,18.45
-Central Park,10.05
-Chinatown,12.13
-Park Slope,14.28
-None,16.3
-Stuyvesant Town,10.77
-Lower East Side,12.23
-East Village,10.87
-Tribeca,12.23
-Carroll Gardens,14.82
-Sheepshead Bay,13.43
-Little Italy,11.6
-Brooklyn Heights,15.68
-Gravesend,17.28
-Washington Heights,17.26
-Forest Hills,15.6
-College Point,20.21
-Bay Ridge,14.14
-Ozone Park,17.38
-Bushwick,15.13
-Gowanus,15.42
-South Slope,16.33
-Civic Center,13.07
-Cobble Hill,14.68
-Battery Park City,14.93
-Downtown Brooklyn,14.99
-Columbia St,27.42
-Two Bridges,12.63
-Rego Park,15.6
-Sunset Park,17.37
-Bedford-Stuyvesant,13.83
-Woodside,17.5
-Crown Heights,14.63
-Windsor Terrace,15.13
-Kew Gardens,21.28
-Ditmars Steinway,14.48
-Fort Greene,14.38
-Flatbush,14.99
-Brighton Beach,23.18
-Mount Hope,11.17
-Hunts Point,12.83
-Longwood,13.36
-Flushing,20.54
-Clinton Hill,13.7
-Dyker Heights,10.69
-Corona,32.3
-Wakefield,15.27
-Bronx Park,13.29
-Randall's Island,29.06
-Marine Park,16.94
-Douglaston,11.0
-Elmhurst,16.43
-Claremont Village,13.1
-Briarwood,36.04
-Spuyten Duyvil,14.43
-Jackson Heights,14.92
-East Elmhurst,24.95
-Fordham,13.13
-DUMBO,15.0
-Glendale,13.54
-Howard Beach,7.6
-Flatlands,17.67
-Springfield Gardens,38.21
-Soundview,13.77
-Prospect Park,15.1
-Prospect-Lefferts Gardens,19.18
-Vinegar Hill,13.87
-South Ozone Park,48.1
-Jamaica,46.0
-Mott Haven,14.43
-Concourse,12.4
-Kew Gardens Hills,14.5
-Hollis,26.42
-East Flatbush,17.0
-Roosevelt Island,13.12
-Parkchester,14.9
-New Dorp,13.25
-Bergen Beach,19.17
-Kingsbridge,14.9
-Bath Beach,13.4
-Bellerose,11.61
-Kensington,12.82
-Flushing Meadows Corona Park,45.46
-Bayside,24.5
-Mill Basin,22.25
-Concourse Village,10.66
-Olinville,10.0
-Mount Eden,14.09
-Tremont,11.05
-Morris Heights,12.11
-Fort Hamilton,21.42
-Belmont,14.69
-Fresh Meadows,11.75
-Ridgewood,16.21
-Melrose,12.59
-North Riverdale,15.14
-Pelham Gardens,21.2
-Floyd Bennett Field,29.0
-Van Cortlandt Park,10.54
-East New York,22.89
-Van Nest,16.33
-Middle Village,16.71
-Midwood,16.48
-East Morrisania,11.73
-Woodhaven,19.41
-Riverdale,15.0
-Richmond Hill,33.04
-Bensonhurst,22.28
-Highbridge,9.66
-Jamaica Estates,26.06
-Throgs Neck,20.75
-Woodlawn,8.3
-Williamsbridge,6.0
-Jamaica Hills,14.44
-University Heights,9.34
-Unionport,23.31
-Green-Wood Cemetery,9.0
-Schuylerville,9.13
-Brownsville,12.81
-Laurelton,10.5
-Port Morris,12.72
-Holliswood,25.0
-Westchester Square,11.05
-Cypress Hills,19.18
-Canarsie,18.94
-Clason Point,12.0
-Marble Hill,19.81
-West Farms,15.0
-Fieldston,8.61
-Concord,18.6
-Whitestone,32.4
-Cambria Heights,12.75
-Rosedale,26.5
-St. Albans,17.56
-Bay Terrace,10.67
-St. George,33.5
-Norwood,13.57
-Morris Park,8.4
-Allerton,12.85
-Navy Yard,14.93
-Queens Village,17.89
-Floral Park,28.88
-Stapleton,24.89
-Broad Channel,44.0
-Morrisania,13.05
-South Beach,20.0
-Ellis Island,16.0
-Co-op City,22.75
-Country Club,9.33
-Forest Park,13.75
-Little Neck,9.0
-Bronxdale,19.75
-Manhattan Beach,8.44
-Ferry Point Park,70.42
-Plum Beach,55.5
-Castleton Corners,15.75
-Baychester,13.5
-Bayswater,12.0
-Emerson Hill,6.5
-Pelham Bay Park,7.0
-Westerleigh,6.1
-Edenwald,13.7
-Cunningham Park,33.67
-Belle Harbor,97.1
-Shore Acres,4.0
-Todt Hill,39.0
-Pelham Bay,19.38
-Governors Island,11.5
-Mariners Harbor,13.5
-Coney Island,29.25
-Castle Hill,13.38
-Midland Beach,10.0
-Park Hill,55.25
-Bull's Head,9.58
-Graniteville,5.42
-Arverne,80.0
-Silver Lake,9.75
-Arrochar,62.5
-Woodrow,10.5
-Arden Heights,4.0
-Rossville,7.5
-New Springville,9.48
-Breezy Point,5.5
-Clifton,6.88
-Eltingville,7.0
-Rikers Island,9.5
-Freshkills Park,9.25
+neighborhood,Average Fare,Total Rides,Mean Fare
+Midtown,10.19,124,41.5
+West Village,12.74,39,33.0
+Chelsea,12.02,85,82.5
+SoHo,13.38,24,52.0
+Theater District,10.96,39,64.0
+Murray Hill,9.98,21,33.0
+Upper East Side,9.53,115,29.5
+LaGuardia Airport,28.87,15,34.5
+Kips Bay,10.7,15,30.0
+Gramercy,10.19,24,43.0
+Upper West Side,9.84,90,52.0
+Harlem,11.35,10,40.0
+Hell's Kitchen,13.8,74,52.0
+Nolita,12.35,10,25.0
+Financial District,18.18,11,52.0
+John F. Kennedy International Airport,45.15,13,53.5
+Greenwich Village,13.03,18,25.0
+Boerum Hill,23.33,3,41.0
+Morningside Heights,7.33,6,11.0
+Prospect Heights,20.0,1,20.0
+Sunnyside,11.25,2,17.0
+East Harlem,9.25,12,22.0
+NoHo,10.63,8,16.0
+Williamsburg,18.56,16,37.0
+Astoria,9.94,8,18.5
+Flatiron District,16.8,10,34.0
+Long Island City,14.0,5,25.0
+Maspeth,32.75,2,52.0
+Central Park,7.0,10,10.5
+Chinatown,13.8,5,23.0
+Park Slope,10.0,3,15.0
+None,19.71,19,74.5
+Stuyvesant Town,14.44,8,55.0
+Lower East Side,11.97,44,29.0
+East Village,14.7,58,107.5
+Tribeca,14.84,16,44.5
+Carroll Gardens,11.75,2,16.5
+Sheepshead Bay,4.0,1,4.0
+Little Italy,17.0,2,22.0
+Brooklyn Heights,20.0,2,27.0
+Bushwick,26.0,1,26.0
+Gowanus,21.0,1,21.0
+Civic Center,5.5,3,7.0
+Battery Park City,18.33,6,28.5
+Downtown Brooklyn,11.17,6,17.5
+Woodside,17.5,3,25.5
+Ditmars Steinway,24.0,1,24.0
+Fort Greene,15.5,1,15.5
+Mount Hope,7.0,1,7.0
+Flushing,23.0,1,23.0
+Clinton Hill,6.25,2,8.5
+Wakefield,40.0,1,40.0
+Randall's Island,33.0,1,33.0
+Elmhurst,28.0,1,28.0
+Jackson Heights,8.0,1,8.0
